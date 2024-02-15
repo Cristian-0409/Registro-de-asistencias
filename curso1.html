@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Asistencia</title>
+  <title>Página Principal</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
+    }
+    .subject {
+      margin-bottom: 20px;
+    }
+    .subject h3 {
+      margin-bottom: 10px;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
     table {
       border-collapse: collapse;
@@ -22,48 +36,48 @@
     th {
       background-color: #f2f2f2;
     }
-    .btn {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
   <h2>Registro de Asistencia</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>No.</th>
-        <th>Nombre del Estudiante</th>
-        <th>Asistencia</th>
-      </tr>
-    </thead>
-    <tbody id="studentList">
-      <!-- Aquí se agregará la lista de estudiantes -->
-    </tbody>
-  </table>
+  <div class="subject">
+    <h3>Matemáticas</h3>
+    <p>Profesor: Juan Pérez</p>
+    <button class="btn" onclick="addAttendance('math')">Registrar Asistencia</button>
+    <table id="mathAttendanceTable">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Nombre del Estudiante</th>
+          <th>Asistencia</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se agregará la lista de asistencia -->
+      </tbody>
+    </table>
+  </div>
 
-  <button class="btn" onclick="addStudent()">Agregar Estudiante</button>
+  <!-- Repite lo mismo para las otras materias -->
 
   <script>
-    // Función para agregar un nuevo estudiante
-    function addStudent() {
+    // Función para agregar la asistencia de un estudiante
+    function addAttendance(subject) {
       var studentName = prompt("Ingrese el nombre del estudiante:");
       if (studentName) {
-        var table = document.getElementById("studentList");
+        var table = document.getElementById(subject + "AttendanceTable"); // Corrección aquí
         var rowCount = table.rows.length;
         var row = table.insertRow(rowCount);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
         cell1.innerHTML = rowCount;
         cell2.innerHTML = studentName;
         cell3.innerHTML = '<input type="checkbox">';
+        cell4.innerHTML = new Date().toLocaleDateString();
       }
     }
   </script>
