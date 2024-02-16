@@ -55,7 +55,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Aquí se agregará la lista de asistencia -->
+        
       </tbody>
     </table>
   </div>
@@ -63,11 +63,10 @@
   <!-- Repite lo mismo para las otras materias -->
 
   <script>
-    // Función para agregar la asistencia de un estudiante
     function addAttendance(subject) {
       var studentName = prompt("Ingrese el nombre del estudiante:");
       if (studentName) {
-        var table = document.getElementById(subject + "AttendanceTable"); // Corrección aquí
+        var table = document.getElementById(subject + "AttendanceTable"); 
         var rowCount = table.rows.length;
         var row = table.insertRow(rowCount);
         var cell1 = row.insertCell(0);
